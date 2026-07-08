@@ -49,8 +49,8 @@ module.exports = {
         {
             "id": "content",
             "name": "File Content",
-            "description": "Type: Text, Object, Unspecified\n\nDescription: The file content.",
-            "types": ["text", "object", "unspecified"]
+            "description": "Type: Unspecified\n\nDescription: The file content.",
+            "types": ["unspecified"]
         }
     ],
 
@@ -62,13 +62,13 @@ module.exports = {
 
         if (fs.existsSync(file_path)) {
             let content = fs.readFileSync(file_path, "utf8");
-
-            if (conversion_type == "json") content = JSON.parse(content);
-
+            if(conversion_type == "json") content = JSON.parse(content);
             this.StoreOutputValue(content, "content", cache);
             this.RunNextBlock("action", cache);
-        } else {
+        }else{
             this.RunNextBlock("action2", cache);
         }
+        
+
     }
 }

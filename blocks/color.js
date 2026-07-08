@@ -12,7 +12,7 @@ module.exports = {
     options: [
         {
             "id": "color",
-            "name": "",
+            "name": "Color",
             "description": "Description: The color to set.",
             "type": "COLOR"
         }

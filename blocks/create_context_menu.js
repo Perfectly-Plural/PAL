@@ -1,166 +1,79 @@
 module.exports = {
     name: "Create Context Menu",
 
-    description:
-        "Creates a context menu that appears when right-clicking or tapping a user or a message.",
+    description: "Creates a context menu and adds it to a slash commands list if provided! (By @T-45)",
 
-    category: "Command Stuff",
+    category: "Slash Commands Builder",
 
     inputs: [
         {
-            id: "action",
-            name: "Action",
-            description: "Acceptable Types: Action\n\nDescription: Executes this block.",
-            types: ["action"]
+            "id": "action",
+            "name": "Action",
+            "description": "Acceptable Types: Action\n\nDescription: Executes this block.",
+            "types": ["action"]
         },
         {
-            id: "context_menu_name",
-            name: "Menu Name",
-            description:
-                "Acceptable Types: Text, Unspecified\n\nDescription: The name of the context menu.",
-            types: ["text", "unspecified"],
-            required: true
+            "id": "name",
+            "name": "Name",
+            "description": "Acceptable Types: Text, Unspecified\n\nDescription: Name of the slash command.\n\nThis is how its going to look like in discord if you put \"help\": /help\n\n(Required)",
+            "types": ["text", "unspecified"],
         },
         {
-            id: "context_menu_server",
-            name: "Menu Server",
-            description:
-                "Acceptable Types: Object, Text, Unspecified\n\nDescription: The server (id) to create this context menu in.",
-            types: ["object", "text", "unspecified"]
+            "id": "commands",
+            "name": "Slash Commands",
+            "description": "Acceptable Types: List, Unspecified\n\nDescription: The slash commands list to update. (Optional)\n\nThis option is made to make it to you dont need to use the lists blocks, so instead of using them you can just use the slash commands input to add this slash command to the list.",
+            "types": ["list", "unspecified"]
         }
     ],
 
     options: [
         {
-            id: "context_menu_type",
-            name: "Menu Type",
-            description: "The type of the context menu.",
-            type: "SELECT",
-            options: {
-                2: "User Context Menu",
-                3: "Message Context Menu"
+            "id": "namee",
+            "name": "Name",
+            "description": "Description: Name of the slash command.\n\nThis is how its going to look like in discord if you put \"help\": /help\n\n(Required)",
+            "type": "TEXT",
+        },
+        {
+            "id": "type",
+            "name": "Type",
+            "description": "Description: The context menu type.",
+            "type": "SELECT",
+            "options": {
+                1: "Message",
+                2: "User"
             }
         },
-        {
-            id: "contexts",
-            name: "Contexts",
-            description: "Description: Where this context menu can be used.",
-            type: "MULTISELECT",
-            options: [
-                ["Guild", "Server"],
-                ["BotDM", "Bot DM"],
-                ["PrivateChannel", "Other DM"]
-            ],
-            defaultValue: ["Guild"]
-        },
-        {
-            id: "integration_types",
-            name: "Integration Types",
-            description: "Description: The integration types of this context menu.",
-            type: "MULTISELECT",
-            options: [
-                ["GuildInstall", "Server Bot"],
-                ["UserInstall", "User Bot"]
-            ],
-            defaultValue: ["GuildInstall"]
-        }
     ],
 
     outputs: [
         {
-            id: "action2",
-            name: "Action",
-            description:
-                "Type: Action\n\nDescription: Executes the following blocks whenever this context menu is executed.",
-            types: ["action"]
+            "id": "action",
+            "name": "Action",
+            "description": "Type: Action\n\nDescription: Executes the following blocks when this block finishes its task.",
+            "types": ["action"]
         },
         {
-            id: "interaction",
-            name: "Interaction",
-            description:
-                "Type: Object\n\nDescription: The interaction created by executing the context menu.",
-            types: ["object"]
+            "id": "slash_cmds",
+            "name": "Slash Command(s)",
+            "description": "Type: List\n\nDescription: The updated slash commands list.\n\nCan be connected directly with the \"Register Slash Commands (Input)\" block or with another \"Create Slash Command\" block to create a list with multiple slash commands!",
+            "types": ["list"]
         },
-        {
-            id: "target_message",
-            name: "Target Message",
-            description:
-                "Type: Object\n\nDescription: The target message. [Message Context Menu Only]",
-            types: ["object"]
-        },
-        {
-            id: "target_user",
-            name: "Target User",
-            description: "Type: Object\n\nDescription: The target user. [User Context Menu Only]",
-            types: ["object"]
-        },
-        {
-            id: "target_member",
-            name: "Target Member",
-            description:
-                "Type: Object\n\nDescription: The target server member if possible. [User Context Menu Only]",
-            types: ["object"]
-        }
+
     ],
 
-    async code(cache) {
-        const DiscordCommands = await this.getDependency("DiscordCommands", cache.name)
+    code(cache) {
+        let name = this.GetInputValue("name", cache) || this.GetOptionValue("namee", cache);
+        const type = this.GetOptionValue("type", cache);
+        let slcslist = this.GetInputValue("commands", cache);
 
-        const { ContextMenuCommandBuilder } = require("discord.js")
-
-        const context_menu_name = this.GetInputValue("context_menu_name", cache).trim()
-        const context_menu_server = this.GetInputValue("context_menu_server", cache)
-        const context_menu_type = Number(this.GetOptionValue("context_menu_type", cache))
-        const contexts = this.GetOptionValue("contexts", cache)
-        const integration_types = this.GetOptionValue("integration_types", cache)
-
-        const contextMenuServerId = context_menu_server?.id || context_menu_server
-
-        const contextMenu = new ContextMenuCommandBuilder()
-            .setName(context_menu_name)
-            .setType(context_menu_type)
-        if (contexts.length > 0) contextMenu.setContexts(...contexts)
-        if (integration_types.length > 0) contextMenu.setIntegrationTypes(...integration_types)
-
-        DiscordCommands.create(contextMenu, contextMenuServerId)
-
-        if (this.isOutputConnected("action2", cache)) {
-            this.events.on("interactionCreate", (interaction) => {
-                if (interaction.commandName === context_menu_name) {
-                    if (
-                        interaction.commandGuildId &&
-                        interaction.commandGuildId !== contextMenuServerId
-                    ) {
-                        return
-                    }
-
-                    switch (context_menu_type) {
-                        case 2:
-                            if (interaction.isUserContextMenuCommand()) {
-                                this.StoreOutputValue(interaction, "interaction", cache)
-                                this.StoreOutputValue(interaction.targetUser, "target_user", cache)
-                                this.StoreOutputValue(
-                                    interaction.targetMember,
-                                    "target_member",
-                                    cache
-                                )
-                                this.RunNextBlock("action2", cache)
-                            }
-                            break
-                        case 3:
-                            if (interaction.isMessageContextMenuCommand()) {
-                                this.StoreOutputValue(interaction, "interaction", cache)
-                                this.StoreOutputValue(
-                                    interaction.targetMessage,
-                                    "target_message",
-                                    cache
-                                )
-                                this.RunNextBlock("action2", cache)
-                            }
-                            break
-                    }
-                }
-            })
+        const cmd = {
+            "name": name,
+            "type": type == 1 ? 3 : 2
         }
+
+        if (!slcslist) slcslist = [cmd]; else slcslist.push(cmd)
+
+        this.StoreOutputValue(slcslist, "slash_cmds", cache)
+        this.RunNextBlock("action", cache);
     }
 }

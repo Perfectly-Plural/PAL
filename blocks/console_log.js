@@ -20,7 +20,14 @@ module.exports = {
         }
     ],
 
-    options: [],
+    options: [
+        {
+            id: "value",
+            name: "Value",
+            description: "Description: The value of the Console Log",
+            type: "TEXT"
+        }
+    ],
 
     outputs: [
         {
@@ -32,9 +39,13 @@ module.exports = {
     ],
 
     code(cache) {
-        const value = this.GetInputValue("value", cache);
+        var content = this.GetInputValue("value", cache);
 
-        console.log(value);
+        if (content == undefined) {
+            content = this.GetOptionValue("value", cache);
+        }
+
+        console.log(content);
 
         this.RunNextBlock("action", cache);
     }

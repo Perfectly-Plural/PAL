@@ -7,18 +7,17 @@ module.exports = {
 
     inputs: [
         {
-            id: "action",
-            name: "Action",
-            description: "Acceptable Types: Action\n\nDescription: Executes this block.",
-            types: ["action"]
+            "id": "action",
+            "name": "Action",
+            "description": "Acceptable Types: Action\n\nDescription: Executes this block.",
+            "types": ["action"]
         },
         {
-            id: "connection",
-            name: "Connection",
-            description:
-                "Acceptable Types: Object, Unspecified\n\nDescription: The voice channel connection.",
-            types: ["object", "unspecified"],
-            required: true
+            "id": "connection",
+            "name": "Connection",
+            "description": "Acceptable Types: Object, Unspecified\n\nDescription: The Voice Connection",
+            "types": ["object", "unspecified"],
+            "required": true
         }
     ],
 
@@ -26,21 +25,19 @@ module.exports = {
 
     outputs: [
         {
-            id: "action",
-            name: "Action",
-            description:
-                "Type: Action\n\nDescription: Executes the following blocks when this block finishes its task.",
-            types: ["action"]
+            "id": "action",
+            "name": "Action",
+            "description": "Type: Action\n\nDescription: Executes the following blocks when this block finishes its task.",
+            "types": ["action"]
         }
     ],
 
     async code(cache) {
-        const connection = this.GetInputValue("connection", cache)
 
-        const DiscordPlayer = await this.getDependency("DiscordPlayer", cache.name)
+        const connection = this.GetInputValue("connection", cache);
 
-        await DiscordPlayer.player.voiceUtils.disconnect(connection)
+        await connection.destroy();
 
-        this.RunNextBlock("action", cache)
+        this.RunNextBlock("action", cache);
     }
 }

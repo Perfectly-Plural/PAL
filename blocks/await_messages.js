@@ -103,7 +103,6 @@ module.exports = {
 
         channel.awaitMessages({
             filter: message => {
-                // This is intentional for eval
                 const user = message.author;
                 const member = message.member;
 

@@ -7,48 +7,48 @@ module.exports = {
 
     inputs: [
         {
-            id: "action",
-            name: "Action",
-            description: "Acceptable Types: Action\n\nDescription: Executes this block.",
-            types: ["action"]
+            "id": "action",
+            "name": "Action",
+            "description": "Acceptable Types: Action\n\nDescription: Executes this block.",
+            "types": ["action"]
         },
         {
-            id: "server",
-            name: "Server",
-            description:
-                "Acceptable Types: Object, Text, Unspecified\n\nDescription: The server to skip its current audio. Supports server ID.",
-            types: ["object", "text", "unspecified"],
-            required: true
+            "id": "server",
+            "name": "Server",
+            "description": "Acceptable Types: Object, Text, Unspecified\n\nDescription: The server to skip its current audio. Supports server ID.",
+            "types": ["object", "text", "unspecified"],
+            "required": true
         },
         {
-            id: "number_skips",
-            name: "Number of Skips",
-            description:
-                'Acceptable Types: Number, Unspecified\n\nDescription: The number of skips. Default: "1". (OPTIONAL)',
-            types: ["number", "unspecified"]
+            "id": "number_skips",
+            "name": "Number of Skips",
+            "description": "Acceptable Types: Number, Unspecified\n\nDescription: The number of skips. Default: \"1\". (OPTIONAL)",
+            "types": ["number", "unspecified"]
         }
     ],
+
+    options: [],
 
     outputs: [
         {
-            id: "action",
-            name: "Action",
-            description:
-                "Type: Action\n\nDescription: Executes the following blocks when this block finishes its task.",
-            types: ["action"]
+            "id": "action",
+            "name": "Action",
+            "description": "Type: Action\n\nDescription: Executes the following blocks when this block finishes its task.",
+            "types": ["action"]
         }
     ],
 
-    async code(cache) {
-        const DiscordPlayer = await this.getDependency("DiscordPlayer", cache.name)
+    code(cache) {
+        const DiscordPlayer = this.getDependency("DiscordPlayer", cache.name)
 
-        const server = this.GetInputValue("server", cache)
-        const number_skips = parseInt(this.GetInputValue("number_skips", cache))
+        const server = this.GetInputValue("server", cache);
+        const number_skips = parseInt(this.GetInputValue("number_skips", cache));
 
-        const queue = DiscordPlayer.player.nodes.get(server)
+        const queue = DiscordPlayer.player.getQueue(server);
 
-        queue?.node.skipTo(number_skips - 1)
+        if(queue && queue.tracks.length)
+            queue.skipTo(number_skips - 1);
 
-        this.RunNextBlock("action", cache)
+        this.RunNextBlock("action", cache);
     }
 }

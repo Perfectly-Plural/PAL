@@ -1,17 +1,22 @@
 module.exports = {
     name: "Merge Actions",
 
-    description: "Merge multiple \"action\"'s into a single one.",
+    description: "Merge the two \"action\"'s into a single one.",
 
     category: "Extras",
 
     inputs: [
         {
-            "id": "action",
-            "name": "Action",
+            "id": "action1",
+            "name": "Action 1",
             "description": "Acceptable Types: Action\n\nDescription: Executes this block.",
-            "types": ["action"],
-            "multiInput": true
+            "types": ["action"]
+        },
+        {
+            "id": "action2",
+            "name": "Action 2",
+            "description": "Acceptable Types: Action\n\nDescription: Executes this block.",
+            "types": ["action"]
         }
     ],
 

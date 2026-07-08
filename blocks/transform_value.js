@@ -66,7 +66,7 @@ module.exports = {
         let res = value;
         switch(transformation_type) {
             case "number1":
-                res = parseInt(value);
+                res = ("" + value).match(/\d+/)[0];
                 break;
             case "number2":
                 res = parseFloat(value);

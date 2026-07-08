@@ -7,63 +7,65 @@ module.exports = {
 
     inputs: [
         {
-            id: "action",
-            name: "Action",
-            description: "Acceptable Types: Action\n\nDescription: Executes this block.",
-            types: ["action"]
+            "id": "action",
+            "name": "Action",
+            "description": "Acceptable Types: Action\n\nDescription: Executes this block.",
+            "types": ["action"]
         },
         {
-            id: "webhook",
-            name: "Webhook",
-            description:
-                "Acceptable Types: Object, Unspecified\n\nDescription: The webhook to send this message.",
-            types: ["object", "unspecified"],
-            required: true
+            "id": "webhook",
+            "name": "Webhook",
+            "description": "Acceptable Types: Object, Unspecified\n\nDescription: The webhook to send this message.",
+            "types": ["object", "unspecified"],
+            "required": true
         },
         {
-            id: "webhook_username_override",
-            name: "Webhook Username Override",
-            description:
-                "Acceptable Types: Text, Unspecified\n\nDescription: The webhook username override for this message. (OPTIONAL)",
-            types: ["text", "unspecified"]
+            "id": "webhook_username_override",
+            "name": "Webhook Username Override",
+            "description": "Acceptable Types: Text, Unspecified\n\nDescription: The webhook username override for this message. (OPTIONAL)",
+            "types": ["text", "unspecified"]
         },
         {
-            id: "webhook_avatar_url_override",
-            name: "Webhook Avatar URL Override",
-            description:
-                "Acceptable Types: Text, Unspecified\n\nDescription: The webhook avatar URL override for this message. (OPTIONAL)",
-            types: ["text", "unspecified"]
+            "id": "webhook_avatar_url_override",
+            "name": "Webhook Avatar URL Override",
+            "description": "Acceptable Types: Text, Unspecified\n\nDescription: The webhook avatar URL override for this message. (OPTIONAL)",
+            "types": ["text", "unspecified"]
         },
         {
-            id: "text",
-            name: "Text",
-            description:
-                "Acceptable Types: Text, Unspecified\n\nDescription: The text to put in the message. (OPTIONAL)",
-            types: ["text", "unspecified"]
+            "id": "message",
+            "name": "Text",
+            "description": "Type: Text\n\nDescription: Executes the following blocks when this block finishes its task.",
+            "types": ["text", "unspecified"]
         },
         {
-            id: "embed",
+            id: "embeds",
             name: "Embed",
-            description:
-                "Acceptable Types: Object, Unspecified\n\nDescription: The embeds to put in the message. (OPTIONAL)",
+            description: "Description: To add a single Button to the Message. (NOT A ROW) (MUST EITHER BE BUTTON OR ROW -- NOT BOTH --)",
             types: ["object", "unspecified"],
-            multiInput: true
         },
         {
-            id: "components",
-            name: "Component",
-            description:
-                "Acceptable Types: Object, Unspecified\n\nDescription: The components to put in the message. (OPTIONAL)",
+            id: "menu",
+            name: "Menu",
+            description: "Description: To add a single Button to the Message. (NOT A ROW) (MUST EITHER BE BUTTON OR ROW -- NOT BOTH --)",
             types: ["object", "unspecified"],
-            multiInput: true
+        },
+        {
+            id: "button_row",
+            name: "Button Row",
+            description: "Description: To add a Button Row to the Message. (MUST EITHER BE BUTTON OR ROW -- NOT BOTH --)",
+            types: ["object", "unspecified"],
+        },
+        {
+            id: "button",
+            name: "Button",
+            description: "Description: To add a single Button to the Message. (NOT A ROW) (MUST EITHER BE BUTTON OR ROW -- NOT BOTH --)",
+            types: ["object", "unspecified"],
         },
         {
             id: "attachment",
             name: "Attachment",
-            description:
-                "Acceptable Types: Object, Text, Unspecified\n\nDescription: The attachments to put in the message. Supports Image, file path and URL. (OPTIONAL)",
-            types: ["object", "text", "unspecified"],
-            multiInput: true
+            description: "Acceptable Types: Object, Text, Unspecified\n\nDescription: The attachment to put in the message. Supports Image, file path and URL. (OPTIONAL)",
+            types: ["object", "text", "unspecified"]
         }
     ],
 
@@ -71,78 +73,94 @@ module.exports = {
 
     outputs: [
         {
-            id: "action",
-            name: "Action",
-            description:
-                "Type: Action\n\nDescription: Executes the following blocks when this block finishes its task.",
-            types: ["action"]
+            "id": "action",
+            "name": "Action",
+            "description": "Type: Action\n\nDescription: Executes the following blocks when this block finishes its task.",
+            "types": ["action"]
         },
         {
-            id: "message",
-            name: "Message",
-            description: "Type: Object\n\nDescription: The message obtained.",
-            types: ["object"]
+            "id": "message",
+            "name": "Message",
+            "description": "Type: Object\n\nDescription: The message obtained.",
+            "types": ["object"]
         }
     ],
 
     code(cache) {
-        const { ActionRowBuilder } = require("discord.js")
+        const webhook = this.GetInputValue("webhook", cache);
+        const webhook_username_override = this.GetInputValue("webhook_username_override", cache);
+        const webhook_avatar_url_override = this.GetInputValue("webhook_avatar_url_override", cache);
 
-        const webhook = this.GetInputValue("webhook", cache)
-        const text = this.GetInputValue("text", cache)
-        const webhook_username_override = this.GetInputValue("webhook_username_override", cache)
-        const webhook_avatar_url_override = this.GetInputValue("webhook_avatar_url_override", cache)
-        const embed = this.GetInputValue("embed", cache).filter((a) => a)
-        const components = this.GetInputValue("components", cache).filter((a) => a)
-        const attachment = this.GetInputValue("attachment", cache).filter((a) => a)
+        const { ActionRowBuilder } = require('discord.js');
 
-        function getComponents(components) {
-            if (components?.length > 0) {
-                let defaultRow
+        const msg = this.GetInputValue("message", cache);
+        const em = this.GetInputValue("embeds", cache);
+        const attachment = this.GetInputValue("attachment", cache);
+        const button1 = this.GetInputValue("button", cache);
+        const button_row = this.GetInputValue("button_row", cache);
+        const menu1 = this.GetInputValue("menu", cache);
+        let components;
+        let button;
+        let menu;
 
-                const res = components.reduce((arr, component) => {
-                    // Action Row
-                    if (component.data?.type === 1) {
-                        if (defaultRow) {
-                            arr.push(defaultRow)
-                            defaultRow = undefined
-                        }
-                        arr.push(component)
-                    } else {
-                        if (!defaultRow) {
-                            defaultRow = new ActionRowBuilder()
-                        }
-
-                        if (defaultRow.components.length === 5) {
-                            arr.push(defaultRow)
-                            defaultRow = new ActionRowBuilder()
-                        }
-
-                        defaultRow.addComponents(component)
-                    }
-                    return arr
-                }, [])
-
-                if (defaultRow) res.push(defaultRow)
-
-                return res
-            } else {
-                return undefined
-            }
+        if (button1 !== undefined) {
+            button =
+                new ActionRowBuilder()
+                    .addComponents(button1)
         }
 
-        webhook
-            .send({
-                content: text,
+        if (menu1 !== undefined) {
+            menu =
+                new ActionRowBuilder()
+                    .addComponents(menu1)
+        }
+
+        if (button1 == undefined && button_row == undefined && menu1 !== undefined) {
+            components = [menu]
+        } else if (button_row == undefined && menu1 == undefined && button1 !== undefined) {
+            components = [button]
+        } else if (menu1 == undefined && button1 == undefined && button_row !== undefined) {
+            components = [button_row]
+        } else if (menu1 !== undefined && button_row !== undefined && button1 == undefined) {
+            components = [menu, button_row]
+        } else if (menu1 !== undefined && button1 !== undefined && button_row == undefined) {
+            components = [menu, button]
+        } else if (menu1 == undefined && button1 !== undefined && button_row !== undefined) {
+            components = [button_row, button]
+        } else if (menu1 !== undefined && button1 !== undefined && button_row !== undefined) {
+            components = [menu, button_row, button]
+        }
+
+        if (em !== undefined) {
+            data = { username: webhook_username_override, avatarURL: webhook_avatar_url_override, content: msg, embeds: [em], components: components, files: attachment ? [attachment] : null }
+            const cleanData = Object.keys(data).reduce((accumulator, key) => {
+                if (data[key] !== undefined)
+                    accumulator[key] = data[key]
+
+                return accumulator;
+            }, {});
+            webhook.send(cleanData).then(msg => {
+                this.StoreOutputValue(msg, "message", cache);
+                this.RunNextBlock("action", cache)
+            });
+        } else {
+            data = {
                 username: webhook_username_override,
                 avatarURL: webhook_avatar_url_override,
-                embeds: embed,
-                components: getComponents(components),
-                files: attachment
-            })
-            .then((msg) => {
-                this.StoreOutputValue(msg, "message", cache)
+                content: msg,
+                components: components,
+                files: attachment ? [attachment] : null
+            }
+            const cleanData = Object.keys(data).reduce((accumulator, key) => {
+                if (data[key] !== undefined)
+                    accumulator[key] = data[key]
+
+                return accumulator;
+            }, {});
+            webhook.send(cleanData).then(msg => {
+                this.StoreOutputValue(msg, "message", cache);
                 this.RunNextBlock("action", cache)
-            })
+            });
+        }
     }
 }

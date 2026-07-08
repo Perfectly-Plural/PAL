@@ -125,17 +125,20 @@ module.exports = {
                 result = message_embed.files;
                 break;
             case 12:
-                try {
+                try 
+                {
                     result = message_embed.footer && message_embed.footer.text;
                 } catch {}
                 break;
             case 13:
-                try {
+                try
+                {
                     result = message_embed.footer && message_embed.footer.iconURL;
                 } catch {}
                 break;
             case 14:
-                try {
+                try
+                {
                     result = message_embed.footer && message_embed.footer.proxyIconURL;
                 } catch {}
                 break;

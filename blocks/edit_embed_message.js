@@ -89,7 +89,7 @@ module.exports = {
             "id": "timestamp",
             "name": "Timestamp (Date)",
             "description": "Acceptable Types: Date, Number, Unspecified\n\nDescription: The new timestamp (Date) for this message embed. If a boolean as \"true\", this uses the current time. (OPTIONAL)",
-            "types": ["date", "number", "unspecified"]
+            "types": ["date", "boolean", "number", "unspecified"]
         }
     ],
 
@@ -112,7 +112,6 @@ module.exports = {
 
     code (cache) {
         const { EmbedBuilder } = require('discord.js');
-
         const message_embed = this.GetInputValue("message_embed", cache);
         const color = this.GetInputValue("color", cache);
         const thumbnail = this.GetInputValue("thumbnail", cache);
@@ -127,12 +126,24 @@ module.exports = {
         const footer_text = this.GetInputValue("footer_text", cache);
         const timestamp = this.GetInputValue("timestamp", cache);
 
-        const footer = { text: footer_text || "\u200b" }
-        if (footer_icon) footer.iconURL = footer_icon;
+        let footer = {};
+        if (footer_text) {
+            footer.text = footer_text
+        } 
+        if (footer_icon) {
+            footer.iconURL = footer_icon
+        } 
 
-        const author = { name: author_name || "\u200b" }
-        if (author_icon) author.iconURL = author_icon;
-        if (author_url) author.url = author_url;
+        let author = {};
+        if (author_name) {
+            author.name = author_name
+        }
+        if (author_icon) {
+            author.iconURL = author_icon
+        }
+        if (author_url) {
+            author.url = author_url
+        }
 
         const embed = EmbedBuilder.from(message_embed)
         if (color) embed.setColor(color);

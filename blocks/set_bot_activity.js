@@ -16,8 +16,7 @@ module.exports = {
             "id": "activity_name",
             "name": "Activity Text",
             "description": "Acceptable Types: Text, Unspecified\n\nDescription: The activity text for the activity.",
-            "types": ["text", "unspecified"],
-            "required": true
+            "types": ["text", "unspecified"]
         },
         {
             "id": "activity_url",
@@ -40,7 +39,7 @@ module.exports = {
                 "streaming": "Streaming",
                 "custom": "Custom (emoji)",
                 "competing": "Competing in",
-                "none": "None"
+                "remove": "Remove Status"
             }
         }
     ],
@@ -65,19 +64,19 @@ module.exports = {
             this.client.user.setPresence({ activity: null });
         } else {
             const activityType = {
-                playing: ActivityType.Playing,
-                listening: ActivityType.Listening,
-                watching: ActivityType.Watching,
-                streaming: ActivityType.Streaming,
-                custom: ActivityType.Custom,
-                competing: ActivityType.Competing,
-            }
+            playing: ActivityType.Playing,
+            listening: ActivityType.Listening,
+            watching: ActivityType.Watching,
+            streaming: ActivityType.Streaming,
+            custom: ActivityType.Custom,
+            competing: ActivityType.Competing,
+        }
 
-            this.client.user.setActivity({
-                name: activity_name,
-                type: activityType[activity_type],
-                url: activity_twitch_url
-            });
+        this.client.user.setActivity({
+            name: activity_name,
+            type: activityType[activity_type],
+            url: activity_twitch_url
+        });
         }
 
         this.RunNextBlock("action", cache);

@@ -1,5 +1,5 @@
 module.exports = {
-    name: "Text",
+    name: "Text 1x",
 
     description: "Creates a text to use it in your blocks.",
 
@@ -12,7 +12,7 @@ module.exports = {
     options: [
         {
             "id": "text",
-            "name": "",
+            "name": "Text",
             "description": "Description: The text to set.",
             "type": "TEXT"
         }

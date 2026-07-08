@@ -30,12 +30,24 @@ module.exports = {
         {
             "id": "number_form",
             "name": "Number Form",
-            "description": "Description: Select the Number form.",
+            "description": "Description: Select the Number form",
             "type": "SELECT",
             "options": {
                 1: "Integer",
                 2: "Decimal",
             }
+        },
+        {
+            id: "min_number",
+            name: "Minimum Number",
+            description: "Description: The value for the Min Value",
+            type: "number"
+        },
+        {
+            id: "max_number",
+            name: "Maximum Number",
+            description: "Description: The value for the Max Value",
+            type: "number"
         }
     ],
 
@@ -49,24 +61,34 @@ module.exports = {
         {
             "id": "number",
             "name": "Number",
-            "description": "Type: Number\n\nDescription: The random number generated.",
-            "types": ["number"]
+            "description": "Type: Text\n\nDescription: The random number generated.",
+            "types": ["number", "unspecified"]
         }
     ],
 
     code(cache) {
-        const min_number = this.GetInputValue("min_number", cache);
+        let min_number = this.GetInputValue("min_number", cache);
         let max_number = this.GetInputValue("max_number", cache);
-        const number_form = this.GetOptionValue("number_form", cache);
+        let number_form = this.GetOptionValue("number_form", cache);
+
+        if(min_number == undefined) {
+            min_number = this.GetOptionValue("min_number", cache);
+        }
+
+        if(max_number == undefined) {
+            max_number = this.GetOptionValue("max_number", cache);
+        }
         
-        if(max_number == undefined) max_number = 1;
+        if(max_number == undefined) {
+        max_number = 1;
+        }
 
         if(number_form == 1){
-            this.StoreOutputValue(Math.floor(Math.random() * (Number(max_number) - Number(min_number) + 1)) + Number(min_number), "number", cache);
+        this.StoreOutputValue(Math.floor(Math.random() * (Number(max_number) - Number(min_number) + 1)) + Number(min_number), "number", cache);
         }
 
         if(number_form == 2){
-            this.StoreOutputValue(Math.random() * (Number(max_number) - Number(min_number) + 1) + Number(min_number), "number", cache);
+        this.StoreOutputValue(Math.random() * (Number(max_number) - Number(min_number) + 1) + Number(min_number), "number", cache);
         }
 
         this.RunNextBlock("action", cache);

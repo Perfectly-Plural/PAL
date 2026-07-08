@@ -54,7 +54,11 @@ module.exports = {
                 33: "Bot OS (Operating System) [Text]",
                 34: "Bot Folder Path [Text]",
                 35: "Bot DBB Workspace Count [Number]",
+                36: "Bot Main Prefix [Text]",
+                37: "Bot Server Prefix List [List <Text>]",
                 38: "Bot Discord Application [Application]",
+                39: "Bot Owners [List <User>]",
+                40: "Bot Owners ID [List <Text>]",
                 41: "Bot Invite URL [Text]",
             }
         }
@@ -215,8 +219,25 @@ module.exports = {
             case 35:
                 result = DBB.Data.workspaces.length;
                 break;
+            case 36:
+                result = DBB.Data.data.dbb.prefixes.main;
+                break;
+            case 37:
+                result = Object.values(DBB.Data.data.dbb.prefixes.servers);
+                break;
             case 38:
                 result = client.application;
+                break;
+            case 39: {
+                const res = [];
+                for (const id of DBB.Data.data.dbb.owners) {
+                    res.push(await client.users.fetch(id));
+                }
+                result = res;
+                break;
+            }
+            case 40:
+                result = DBB.Data.data.dbb.owners;
                 break;
             case 41:
                 result = await client.generateInvite({

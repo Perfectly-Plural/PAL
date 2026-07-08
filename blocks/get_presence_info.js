@@ -66,7 +66,7 @@ module.exports = {
         }
     ],
 
-    code(cache) {
+   async code(cache) {
         const activity = this.GetInputValue("presence", cache);
         const activity_info = parseInt(this.GetOptionValue("presence_info", cache));
 

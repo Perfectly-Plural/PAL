@@ -12,7 +12,7 @@ module.exports = {
     options: [
         {
             "id": "number",
-            "name": "",
+            "name": "Number",
             "description": "Description: The number to set.",
             "type": "NUMBER"
         }

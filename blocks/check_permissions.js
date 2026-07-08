@@ -79,6 +79,7 @@ module.exports = {
 
     code(cache) {
         const permissions = this.GetInputValue("permissions", cache);
+        
 
         const {PermissionFlagsBits, PermissionsBitField} = require("discord.js");
 
@@ -115,7 +116,6 @@ module.exports = {
             manage_webhooks: PermissionFlagsBits.ManageWebhooks,
             manage_emojis: PermissionFlagsBits.ManageEmojisAndStickers
         }
-        
         const permission = perms[this.GetOptionValue("permission", cache) + ""];
 
         let result = false;

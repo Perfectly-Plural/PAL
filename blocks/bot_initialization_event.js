@@ -1,5 +1,5 @@
 module.exports = {
-    name: "Bot Start [Event]",
+    name: "Bot Initialization [Event]",
 
     description: "When your bot becomes ready to start working, this event will trigger.",
 

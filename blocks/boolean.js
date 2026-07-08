@@ -12,9 +12,13 @@ module.exports = {
     options: [
         {
             "id": "boolean_type",
-            "name": "",
-            "description": "Description: The boolean to set.",
-            "type": "CHECKBOX"
+            "name": "Boolean Type",
+            "description": "Description: The type of boolean to set.",
+            "type": "SELECT",
+            "options": {
+                "true": "True/Yes",
+                "false": "False/No"
+            }
         }
     ],
 
@@ -28,7 +32,6 @@ module.exports = {
     ],
 
     code(cache) {
-        const boolean_type = Boolean(this.GetOptionValue("boolean_type", cache))
-        this.StoreOutputValue(boolean_type, "boolean", cache, "inputBlock");
+        this.StoreOutputValue(this.GetOptionValue("boolean_type", cache) == "true", "boolean", cache, "inputBlock");
     }
 }

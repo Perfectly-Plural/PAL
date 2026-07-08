@@ -60,7 +60,7 @@ module.exports = {
         {
             "id": "manage_guild",
             "name": "Manage Server",
-            "description": "Members with this permission can change the server's name and region and add bots for example.",
+            "description": "Members with this permission can change the server's name and region and add bots, for example.",
             "type": "SELECT",
             "options": {
                 "none": "Do Not Change",

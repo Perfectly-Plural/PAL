@@ -1,7 +1,7 @@
 module.exports = {
     name: "Check Value Type",
 
-    description: "Checks if the type of a value equals the option type set.",
+    description: "Checks if the Type of a Value equals the Option Type Set.",
 
     category: "Extras",
 
@@ -15,7 +15,7 @@ module.exports = {
         {
             "id": "value",
             "name": "Value",
-            "description": "Acceptable Types: Unspecified, Undefined, Null, Object, Boolean, Date, Number, Text, List\n\nDescription: The Value to check the type of.",
+            "description": "Acceptable Types: Unspecified, Undefined, Null, Object, Boolean, Date, Number, Text, List\n\nDescription: The Value to check the Type of.",
             "types": ["unspecified", "undefined", "null", "object", "boolean", "date", "number", "text", "list"],
             "required": true
         }
@@ -25,7 +25,7 @@ module.exports = {
         {
             "id": "type",
             "name": "Check Type",
-            "description": "Description: The type the value should be to return true.",
+            "description": "Description: The Type the value should be to return true",
             "type": "SELECT",
             "options": {
                 "bool": "Boolean",

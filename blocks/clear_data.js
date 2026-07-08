@@ -1,7 +1,7 @@
 module.exports = {
     name: "Clear Data",
 
-    description: "Clears entire bot's specific data.",
+    description: "Clears entire Data Parts",
 
     category: "Data Stuff",
 
@@ -18,7 +18,7 @@ module.exports = {
         {
             "id": "data_type",
             "name": "Data Type",
-            "description": "Description: The type of this data.",
+            "description": "Description: The type of this data. If not \"None\", you need to put a value in the \"Server/Member/User\" input depending on which option you selected here.",
             "type": "SELECT",
             "options": {
                 "custom": "Custom",
@@ -59,5 +59,6 @@ module.exports = {
         }
 
         this.RunNextBlock("action", cache);
+        
     }
 }

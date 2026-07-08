@@ -1,7 +1,7 @@
 module.exports = {
     name: "Change Bot Avatar",
 
-    description: "Changes the bot avatar.",
+    description: "Changes the bot prefix to be used in commands. Supports server prefix too.",
 
     category: "Bot Stuff",
 
@@ -15,7 +15,7 @@ module.exports = {
         {
             "id": "avatar_url",
             "name": "Avatar URL",
-            "description": "Acceptable Types: Text, Unspecified\n\nDescription: The new avatar for the bot.",
+            "description": "Acceptable Types: Text, Unspecified\n\nDescription: The new prefix to change.",
             "types": ["text", "unspecified"],
             "required": true
         }

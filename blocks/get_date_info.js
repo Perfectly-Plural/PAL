@@ -28,7 +28,7 @@ module.exports = {
             "description": "Description: The date information to get.",
             "type": "SELECT",
             "options": {
-                1: "Date Timestamp (Milliseconds) [Number]",
+                1: "Date Unix Timestamp [Number]",
                 2: "Date Weekday [Text]",
                 3: "Date Day Number [Number]",
                 4: "Date Month of the Year [Text]",
@@ -76,10 +76,12 @@ module.exports = {
         const date_info = parseInt(this.GetOptionValue("date_info", cache));
         const time_type = this.GetOptionValue("time_type", cache) == "utc" ? "UTC" : "";
 
-        let result;
+        let result; 
         switch(date_info) {
             case 1:
-                result = date.getTime();
+                result = date["get" + time_type + "Time"]();
+                result = date / 1000
+                result = Math.trunc(result)
                 break;
             case 2:
                 result = ({

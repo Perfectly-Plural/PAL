@@ -43,7 +43,7 @@ module.exports = {
                 14: "Role Permissions [Permissions]",
                 15: "Role Raw Position (API) [Number]",
                 16: "Role Mention [Text]",
-                17: "Role Emoji/Icon URL (Boosted Server Only) [Text]"
+                17: "Role Emoji / Role Icon URL [Boostd Server Only]"
             }
         }
     ],
@@ -115,11 +115,11 @@ module.exports = {
                 result = role.toString();
                 break;
             case 17:
-                if (role.unicodeEmoji !== null) {
+                if(role.unicodeEmoji !== null){
                     result = role.unicodeEmoji;
-                } else if (role.icon !== null) {
+                }else if(role.icon !== null){
                     result = role.iconURL({dynamic: true, format: "png"});
-                } else{
+                }else{
                     result = null
                 }
             break;

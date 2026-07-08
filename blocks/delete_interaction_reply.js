@@ -1,43 +1,44 @@
 module.exports = {
+  
     name: "Delete Interaction Reply",
 
-    description:
-        "Deletes the reply to the interaction made by a slash command for example.",
+    description: "",
 
-    category: "Command Stuff",
+    category: ".MOD",
 
     inputs: [
         {
-            id: "action",
-            name: "Action",
-            description: "Acceptable Types: Action\n\nDescription: Executes this block.",
-            types: ["action"]
+            "id": "action",
+            "name": "Action",
+            "description": "Type: Action\n\nDescription: Executes the following blocks when this block finishes its task.",
+            "types": ["action"]
         },
         {
-            id: "interaction",
-            name: "Interaction",
-            description:
-                "Acceptable Types: Object, Unspecified\n\nDescription: The interaction to delete.",
-            types: ["object", "unspecified"],
-            required: true
+            "id": "interactreply",
+            "name": "Interaction",
+            "description": "Type: Action\n\nDescription: Executes the following blocks when this block finishes its task.",
+            "types": ["object"]
         }
     ],
+
+    options: [],
 
     outputs: [
         {
-            id: "action",
-            name: "Action",
-            description:
-                "Type: Action\n\nDescription: Executes the following blocks when this block finishes its task.",
-            types: ["action"]
+            "id": "action",
+            "name": "Action",
+            "description": "Type: Action\n\nDescription: Executes the following blocks when this block finishes its task.",
+            "types": ["action"]
         }
     ],
 
-    code(cache) {
-        const interaction = this.GetInputValue("interaction", cache)
+    async code(cache) {
 
-        interaction.deleteReply().then(() => {
-            this.RunNextBlock("action", cache)
-        })
+        const inter = this.GetInputValue("interactreply", cache); 
+        
+        inter.deleteReply()
+
+        this.RunNextBlock("action", cache);
+        
     }
 }

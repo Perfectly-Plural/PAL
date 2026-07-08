@@ -53,7 +53,8 @@ module.exports = {
             "type": "SELECT",
             "options": {
                 "text": "Text",
-                "json": "Object (JSON)"
+                "json": "Object (JSON)",
+				"buffer": "Image (Buffer)"
             }
         }
     ],
@@ -69,7 +70,7 @@ module.exports = {
             "id": "data",
             "name": "API Data",
             "description": "Type: Object\n\nDescription: The API data obtained if possible.",
-            "types": ["object"]
+            "types": ["object", "unspecified"]
         }
     ],
 
@@ -81,17 +82,14 @@ module.exports = {
         const data_type = this.GetOptionValue("data_type", cache) + "";
 
         const fetch = await this.require("node-fetch");
-        try {
-            const res = await fetch(url, {
-                method,
-                headers,
-                body: typeof body == "object" ? JSON.stringify(body) : body + "",
-                timeout: 7000
-            });
+        let options = {};
+        options.method = method;
+        if (body) options.body = typeof body == "object" ? JSON.stringify(body) : body + "";
+        if (headers) options.headers = headers;
+        options.timeout == 7000
+        const res = await fetch(url, options).catch(err => console.error(err));
 
-            var data = data_type == "json" ? await res.json() : await res.text();
-        } catch {}
-
+        var data = data_type == "json" ? await res.json() : data_type == "buffer" ? await res.buffer() : await res.text();
         this.StoreOutputValue(data, "data", cache);
         this.RunNextBlock("action", cache);
     }

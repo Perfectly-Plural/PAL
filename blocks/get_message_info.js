@@ -195,8 +195,12 @@ module.exports = {
                 result = message.message.flags.toArray();
                 break;
             case 36:
-                result = message.reference !== null
-                break;
+                if(message.reference !== null){
+                    result = true
+                }else{
+                    result = false
+                }
+            break;
             case 37:
                 result = message.reference.guildId;                      
                 break;

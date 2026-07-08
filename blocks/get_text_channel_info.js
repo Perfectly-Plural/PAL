@@ -53,7 +53,7 @@ module.exports = {
                 26: "Text Channel Invite List [List <Invite>]",
                 27: "Text Channel Webhook List [List <Webhook>]",
                 28: "Text Channel Mention [Text]",
-                29: "Text Channel Threads [List <ThreadChannel>]"
+                29: "Text Channel Threads [List]"
             }
         }
     ],
@@ -95,7 +95,8 @@ module.exports = {
                 result = text_channel.id;
                 break;
             case 6:
-                result = text_channel.lastMessage;
+                let messagelist = await text_channel.messages.fetch();
+                result = await messagelist.first();
                 break;
             case 7:
                 result = text_channel.lastMessageID;
@@ -107,13 +108,12 @@ module.exports = {
                 result = text_channel.manageable;
                 break;
             case 10:
-                result = text_channel.members.array();
+                result = Array.from(await text_channel.members.values());
                 break;
-            case 11: {
-                const messages = await text_channel.messages.fetch();
-                result = messages.toJSON();
+            case 11:
+                let messages = await text_channel.messages.fetch();
+                result = await messages.toJSON();
                 break;
-            }
             case 12:
                 result = await text_channel.messages.fetchPinned().then(a => Array.from(a));
                 break;
@@ -159,11 +159,9 @@ module.exports = {
             case 28:
                 result = text_channel.toString();
                 break;
-            case 29: {
-                const threads = await text_channel.threads.fetch();
-                result = threads.toJSON();
+            case 29:
+                result = await text_channel.threads.fetch();
                 break;
-            }
         }
 
         this.StoreOutputValue(result, "result", cache);

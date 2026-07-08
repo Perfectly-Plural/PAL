@@ -119,10 +119,6 @@ module.exports = {
             } else if (target_type == 2) {
                 return emojis.includes(reaction.emoji.name) && user.id === target_user.id && !user.bot;
             } else {
-                // This is intentional for eval
-                const user = message.author;
-                const member = message.member;
-
                 try {
                     return Boolean(eval(javascript_filter_code));
                 } catch {
