@@ -157,7 +157,7 @@
                         "name": "text",
                         "inputs": {},
                         "options": {
-                            "text": "PAL v0.0.6dev"
+                            "text": "PAL v0.0.6"
                         },
                         "outputs": {
                             "text": [
