@@ -184,7 +184,7 @@
             "lock" : false,
             "name" : "text",
             "options" : {
-              "text" : "PAL v0.0.8dev20260728"
+              "text" : "PAL v0.0.8p1"
             },
             "outputs" : {
               "text" : [
@@ -728,11 +728,7 @@
                 "MdUTugFx2T"
               ],
               "text" : [
-                "KQsGh379xW",
-                "5uo8OTJ0KD",
-                "d6l8ly5JLB",
-                "00ql1fYjvp",
-                "cA5wfeCAPj"
+                "KQsGh379xW"
               ]
             },
             "lock" : false,
@@ -865,41 +861,6 @@
             "width" : 400,
             "x" : 2090,
             "y" : 0,
-            "z" : 0
-          },
-          {
-            "active" : true,
-            "block_id" : "YNRW6AhSEK:27",
-            "color" : "",
-            "height" : 160,
-            "inputs" : {
-
-            },
-            "lock" : false,
-            "name" : "text_4x",
-            "options" : {
-              "text1" : "",
-              "text2" : "",
-              "text3" : "",
-              "text4" : ""
-            },
-            "outputs" : {
-              "text1" : [
-                "5uo8OTJ0KD"
-              ],
-              "text2" : [
-                "d6l8ly5JLB"
-              ],
-              "text3" : [
-                "00ql1fYjvp"
-              ],
-              "text4" : [
-                "cA5wfeCAPj"
-              ]
-            },
-            "width" : 300,
-            "x" : 5452.9453125,
-            "y" : 994.86328125,
             "z" : 0
           }
         ],
@@ -10210,7 +10171,7 @@
                 "d7wfAZ3hal"
               ],
               "value" : [
-                "P06u9dDNst"
+                "qjZp0Gkyc4"
               ]
             },
             "width" : 370,
@@ -10238,7 +10199,7 @@
                 "5l14scULOi"
               ],
               "value" : [
-                "tThcP7f8Ga"
+                "5S8aNxo3n0"
               ]
             },
             "width" : 370,
@@ -10266,7 +10227,7 @@
                 "XMLo78snkb"
               ],
               "value" : [
-                "PYiPyljcPD"
+                "0bntS536sP"
               ]
             },
             "width" : 370,
@@ -10294,7 +10255,7 @@
                 "q0OrJI9suk"
               ],
               "value" : [
-                "TJ7uPNC9GS"
+                "qW8iQ4ByK0"
               ]
             },
             "width" : 370,
@@ -10318,15 +10279,15 @@
             },
             "outputs" : {
               "action" : [
-                "LlDtfftcIx"
+                "MQ3bzv8tim"
               ],
               "result" : [
                 "9gJ9UmSpH7"
               ]
             },
             "width" : 350,
-            "x" : 980,
-            "y" : 590,
+            "x" : 1076.39453125,
+            "y" : 585.6640625,
             "z" : 0
           },
           {
@@ -10386,8 +10347,8 @@
               ]
             },
             "width" : 350,
-            "x" : 952.0012679458746,
-            "y" : 769.9017431639511,
+            "x" : 1859.7864241958746,
+            "y" : 633.7650244139511,
             "z" : 0
           },
           {
@@ -10923,7 +10884,7 @@
                 "YsXKy4qmCq"
               ],
               "value" : [
-                "WHEZgQ6V2B"
+                "BSzrYwHeyf"
               ]
             },
             "width" : 370,
@@ -10951,7 +10912,7 @@
                 "3xmfXx0qrl"
               ],
               "value" : [
-                "WDBlDlQDFf"
+                "MJ34fcmuST"
               ]
             },
             "width" : 370,
@@ -10979,7 +10940,7 @@
                 "99X58eLEaz"
               ],
               "value" : [
-                "Dj1N1y7Axj"
+                "Ynxh1oWHE6"
               ]
             },
             "width" : 370,
@@ -11003,15 +10964,15 @@
             },
             "outputs" : {
               "action" : [
-                "5zHozS8AxX"
+                "IFKRL6ApgL"
               ],
               "result" : [
                 "IgNGNxv4Ie"
               ]
             },
             "width" : 350,
-            "x" : 1020,
-            "y" : 2120,
+            "x" : 1074.5466039456603,
+            "y" : 2119.422576559801,
             "z" : 0
           },
           {
@@ -11071,8 +11032,8 @@
               ]
             },
             "width" : 350,
-            "x" : 1020,
-            "y" : 2300,
+            "x" : 1498.2459865562375,
+            "y" : 2299.6913771267905,
             "z" : 0
           },
           {
@@ -12047,7 +12008,7 @@
             "name" : "better_send_message",
             "options" : {
               "silent" : "undefined",
-              "text" : "",
+              "text" : "<@&820414085790826506>",
               "type" : "send"
             },
             "outputs" : {
@@ -12232,6 +12193,92 @@
             "width" : 300,
             "x" : 489.03113109737046,
             "y" : -156.93649629582535,
+            "z" : 0
+          },
+          {
+            "active" : true,
+            "block_id" : "6nlGH2QwKD:70",
+            "color" : "",
+            "height" : 160,
+            "inputs" : {
+              "action" : "MQ3bzv8tim",
+              "text1" : "qjZp0Gkyc4",
+              "text2" : "5S8aNxo3n0",
+              "text3" : "0bntS536sP",
+              "text4" : "qW8iQ4ByK0",
+              "text5" : "lm6wQ3bX90"
+            },
+            "lock" : false,
+            "name" : "escape_sql_text_d6",
+            "options" : {
+
+            },
+            "outputs" : {
+              "action" : [
+                "LlDtfftcIx"
+              ],
+              "text1" : [
+                "P06u9dDNst"
+              ],
+              "text2" : [
+                "tThcP7f8Ga"
+              ],
+              "text3" : [
+                "PYiPyljcPD"
+              ],
+              "text4" : [
+                "TJ7uPNC9GS"
+              ],
+              "text5" : [
+
+              ]
+            },
+            "width" : 300,
+            "x" : 1420.66796875,
+            "y" : 736.16796875,
+            "z" : 0
+          },
+          {
+            "active" : true,
+            "block_id" : "6nlGH2QwKD:71",
+            "color" : "",
+            "height" : 160,
+            "inputs" : {
+              "action" : "IFKRL6ApgL",
+              "text1" : "BSzrYwHeyf",
+              "text2" : "MJ34fcmuST",
+              "text3" : "Ynxh1oWHE6",
+              "text4" : "dZAwGPgzzb",
+              "text5" : "RUsyQPxBjl"
+            },
+            "lock" : false,
+            "name" : "escape_sql_text_d6",
+            "options" : {
+
+            },
+            "outputs" : {
+              "action" : [
+                "5zHozS8AxX"
+              ],
+              "text1" : [
+                "WHEZgQ6V2B"
+              ],
+              "text2" : [
+                "WDBlDlQDFf"
+              ],
+              "text3" : [
+                "Dj1N1y7Axj"
+              ],
+              "text4" : [
+
+              ],
+              "text5" : [
+
+              ]
+            },
+            "width" : 300,
+            "x" : 1087.7765757642944,
+            "y" : 2314.31043853268,
             "z" : 0
           }
         ],
@@ -19388,7 +19435,7 @@
             "lock" : false,
             "name" : "merge_texts_advanced",
             "options" : {
-              "text" : "SELECT * FROM `applications` WHERE `message_id` = ‘${text1}’"
+              "text" : "SELECT * FROM `applications` WHERE `message_id` = '${text1}'"
             },
             "outputs" : {
               "action" : [
@@ -19477,7 +19524,7 @@
             "lock" : false,
             "name" : "get_property_from_object_option",
             "options" : {
-              "key" : "user_id"
+              "key" : "userid"
             },
             "outputs" : {
               "action" : [
@@ -19675,7 +19722,7 @@
             "lock" : false,
             "name" : "merge_texts_advanced",
             "options" : {
-              "text" : "UPDATE `applications` SET `status` = ‘3’ WHERE `applications`.`id` = ${text1}"
+              "text" : "UPDATE `applications` SET `status` = '3' WHERE `applications`.`id` = ${text1}"
             },
             "outputs" : {
               "action" : [
@@ -19912,6 +19959,443 @@
           "description" : "",
           "thumbnail" : "",
           "title" : "Accept App"
+        },
+        "notes" : [
+
+        ]
+      },
+      {
+        "active" : true,
+        "blocks" : [
+          {
+            "active" : true,
+            "block_id" : "gq6f07IFUW:0",
+            "color" : "",
+            "height" : 160,
+            "inputs" : {
+
+            },
+            "lock" : false,
+            "name" : "interaction_event",
+            "options" : {
+              "group" : "",
+              "id" : "denyapp",
+              "sub" : "",
+              "type" : "button",
+              "value" : ""
+            },
+            "outputs" : {
+              "action" : [
+                "lUMsG7vmlU"
+              ],
+              "args" : [
+
+              ],
+              "channel" : [
+                "pIZGaq8qPh",
+                "bMbum30r33"
+              ],
+              "interaction" : [
+                "aed3s15RZy"
+              ],
+              "member" : [
+
+              ],
+              "menuvalues" : [
+
+              ],
+              "message" : [
+                "efsZDOsRE3"
+              ],
+              "name" : [
+
+              ],
+              "server" : [
+
+              ],
+              "subcommandgroup" : [
+
+              ],
+              "subcommandname" : [
+
+              ],
+              "user" : [
+                "MFwck6uwBu"
+              ]
+            },
+            "width" : 300,
+            "x" : 349.79296875,
+            "y" : 509.58203125,
+            "z" : 0
+          },
+          {
+            "active" : true,
+            "block_id" : "gq6f07IFUW:1",
+            "color" : "",
+            "height" : 160,
+            "inputs" : {
+              "action" : "lUMsG7vmlU",
+              "message" : "efsZDOsRE3"
+            },
+            "lock" : false,
+            "name" : "get_message_info",
+            "options" : {
+              "message_info" : "15"
+            },
+            "outputs" : {
+              "action" : [
+                "RFWgRGoATW"
+              ],
+              "result" : [
+                "ju8ZZ9fTm9"
+              ]
+            },
+            "width" : 300,
+            "x" : 947.25390625,
+            "y" : 357.4140625,
+            "z" : 0
+          },
+          {
+            "active" : true,
+            "block_id" : "gq6f07IFUW:2",
+            "color" : "",
+            "height" : 160,
+            "inputs" : {
+              "action" : "RFWgRGoATW",
+              "text1" : "ju8ZZ9fTm9",
+              "text2" : "Yxn23Kh0GH",
+              "text3" : "Aj4l9xuWuq"
+            },
+            "lock" : false,
+            "name" : "merge_texts_advanced",
+            "options" : {
+              "text" : "SELECT * FROM `applications` WHERE `message_id` = '${text1}'"
+            },
+            "outputs" : {
+              "action" : [
+                "9SiL4XWccS"
+              ],
+              "text" : [
+                "MP9HgByVL2"
+              ]
+            },
+            "width" : 300,
+            "x" : 1508.83984375,
+            "y" : 402.25,
+            "z" : 0
+          },
+          {
+            "active" : true,
+            "block_id" : "gq6f07IFUW:3",
+            "color" : "",
+            "height" : 160,
+            "inputs" : {
+              "action" : "9SiL4XWccS",
+              "query" : "MP9HgByVL2"
+            },
+            "lock" : false,
+            "name" : "database_query",
+            "options" : {
+
+            },
+            "outputs" : {
+              "action" : [
+                "hlUVUvX2Zg"
+              ],
+              "erroraction" : [
+
+              ],
+              "errormsg" : [
+
+              ],
+              "response" : [
+                "6Xnn4aWmSX"
+              ]
+            },
+            "width" : 300,
+            "x" : 1958.94140625,
+            "y" : 405.28125,
+            "z" : 0
+          },
+          {
+            "active" : true,
+            "block_id" : "gq6f07IFUW:4",
+            "color" : "",
+            "height" : 160,
+            "inputs" : {
+              "action" : "hlUVUvX2Zg",
+              "custom_position" : "SwiKphsA5f",
+              "list" : "6Xnn4aWmSX"
+            },
+            "lock" : false,
+            "name" : "get_item_from_list",
+            "options" : {
+              "position_type" : "first"
+            },
+            "outputs" : {
+              "action" : [
+                "vQzL4i5WPN"
+              ],
+              "value" : [
+                "NuioFHjNzp"
+              ]
+            },
+            "width" : 300,
+            "x" : 2452.303067797368,
+            "y" : 526.3815114455994,
+            "z" : 0
+          },
+          {
+            "active" : true,
+            "block_id" : "gq6f07IFUW:13",
+            "color" : "",
+            "height" : 160,
+            "inputs" : {
+              "action" : "liX9EOyqnV",
+              "text1" : "Ug0aoZHymb",
+              "text2" : "idzLNzlmVA",
+              "text3" : "ppT8DNYhnP"
+            },
+            "lock" : false,
+            "name" : "merge_texts_advanced",
+            "options" : {
+              "text" : "UPDATE `applications` SET `status` = '4' WHERE `applications`.`id` = ${text1}"
+            },
+            "outputs" : {
+              "action" : [
+                "Vj0ggInExD"
+              ],
+              "text" : [
+                "NLUZseNVNm"
+              ]
+            },
+            "width" : 300,
+            "x" : 2568.3873596614553,
+            "y" : 987.045027167635,
+            "z" : 0
+          },
+          {
+            "active" : true,
+            "block_id" : "gq6f07IFUW:14",
+            "color" : "",
+            "height" : 160,
+            "inputs" : {
+              "action" : "vQzL4i5WPN",
+              "object" : "NuioFHjNzp"
+            },
+            "lock" : false,
+            "name" : "get_property_from_object_option",
+            "options" : {
+              "key" : "id"
+            },
+            "outputs" : {
+              "action" : [
+                "liX9EOyqnV"
+              ],
+              "value" : [
+                "Ug0aoZHymb"
+              ]
+            },
+            "width" : 300,
+            "x" : 2376.269176112195,
+            "y" : 778.0648728052503,
+            "z" : 0
+          },
+          {
+            "active" : true,
+            "block_id" : "gq6f07IFUW:15",
+            "color" : "",
+            "height" : 160,
+            "inputs" : {
+              "action" : "Vj0ggInExD",
+              "query" : "NLUZseNVNm"
+            },
+            "lock" : false,
+            "name" : "database_query",
+            "options" : {
+
+            },
+            "outputs" : {
+              "action" : [
+                "L5zyGcH3oB"
+              ],
+              "erroraction" : [
+
+              ],
+              "errormsg" : [
+
+              ],
+              "response" : [
+
+              ]
+            },
+            "width" : 300,
+            "x" : 2610.6297136501043,
+            "y" : 1305.4990359176127,
+            "z" : 0
+          },
+          {
+            "active" : true,
+            "block_id" : "gq6f07IFUW:16",
+            "color" : "",
+            "height" : 160,
+            "inputs" : {
+              "action" : "4UmIqeOLZ8",
+              "autoarchive" : "bRW7TrV3W1",
+              "invitable" : "L6K6QKjrHz",
+              "name" : "v31LOGLcur",
+              "setarchive" : "lCneuT7en0",
+              "setlocked" : "XRYSpYfnuw",
+              "slowmode" : "nIb9pr3qcM",
+              "thread" : "pIZGaq8qPh"
+            },
+            "lock" : false,
+            "name" : "thread_edit",
+            "options" : {
+
+            },
+            "outputs" : {
+              "action" : [
+                "ZOAq8JsPwb"
+              ],
+              "thread" : [
+
+              ]
+            },
+            "width" : 300,
+            "x" : 3638.258152577378,
+            "y" : 1880.571088394985,
+            "z" : 0
+          },
+          {
+            "active" : true,
+            "block_id" : "gq6f07IFUW:17",
+            "color" : "",
+            "height" : 160,
+            "inputs" : {
+              "action" : "n2CE9tLF2B",
+              "text1" : "3Ujts2ffI2",
+              "text2" : "0p7BLnAZ96",
+              "text3" : "vSqUdPTJcp"
+            },
+            "lock" : false,
+            "name" : "merge_texts_advanced",
+            "options" : {
+              "text" : "[DENIED by ${text2}] ${text1}"
+            },
+            "outputs" : {
+              "action" : [
+                "4UmIqeOLZ8"
+              ],
+              "text" : [
+                "v31LOGLcur",
+                "Ss7BG2ngUu"
+              ]
+            },
+            "width" : 300,
+            "x" : 3419.7981725275517,
+            "y" : 1569.4907177881055,
+            "z" : 0
+          },
+          {
+            "active" : true,
+            "block_id" : "gq6f07IFUW:18",
+            "color" : "",
+            "height" : 160,
+            "inputs" : {
+              "action" : "L5zyGcH3oB",
+              "thread" : "bMbum30r33"
+            },
+            "lock" : false,
+            "name" : "thread_get_info",
+            "options" : {
+              "thread_info" : "11"
+            },
+            "outputs" : {
+              "action" : [
+                "8hMDLNcfja"
+              ],
+              "result" : [
+                "3Ujts2ffI2"
+              ]
+            },
+            "width" : 300,
+            "x" : 3371.52290764356,
+            "y" : 1314.272778259719,
+            "z" : 0
+          },
+          {
+            "active" : true,
+            "block_id" : "gq6f07IFUW:19",
+            "color" : "",
+            "height" : 160,
+            "inputs" : {
+              "action" : "ZOAq8JsPwb",
+              "attachment" : "OPtjCCccBh",
+              "embeds" : "swdGKHBhph",
+              "interaction" : "aed3s15RZy",
+              "message" : "Ss7BG2ngUu",
+              "row1" : "5gztBCpjcz",
+              "row2" : "UPncapf7OC",
+              "row3" : "amSrw3tjNS",
+              "row4" : "bpFfzQwc9f",
+              "row5" : "UcaBZn4ts0"
+            },
+            "lock" : false,
+            "name" : "reply_interaction",
+            "options" : {
+              "private" : "false",
+              "response" : "reply"
+            },
+            "outputs" : {
+              "action" : [
+
+              ],
+              "interaction" : [
+
+              ],
+              "message" : [
+
+              ]
+            },
+            "width" : 300,
+            "x" : 4084.951459068353,
+            "y" : 1527.4906532191771,
+            "z" : 0
+          },
+          {
+            "active" : true,
+            "block_id" : "gq6f07IFUW:20",
+            "color" : "",
+            "height" : 160,
+            "inputs" : {
+              "action" : "8hMDLNcfja",
+              "user" : "MFwck6uwBu"
+            },
+            "lock" : false,
+            "name" : "get_user_info",
+            "options" : {
+              "user_info" : "16"
+            },
+            "outputs" : {
+              "action" : [
+                "n2CE9tLF2B"
+              ],
+              "result" : [
+                "0p7BLnAZ96"
+              ]
+            },
+            "width" : 300,
+            "x" : 2757.6676043614916,
+            "y" : 1605.2504097526626,
+            "z" : 0
+          }
+        ],
+        "id" : "gq6f07IFUW",
+        "info" : {
+          "description" : "",
+          "thumbnail" : "",
+          "title" : "Deny App"
         },
         "notes" : [
 
