@@ -19428,7 +19428,7 @@
             "y": 3126.2141932756613,
             "z": 20,
             "width": 500,
-            "height": 180,
+            "height": 377,
             "lock": false,
             "name": "text_4x",
             "inputs": {},
@@ -19573,7 +19573,7 @@
             "y": 2961.079494724166,
             "z": 25,
             "width": 500,
-            "height": 180,
+            "height": 256,
             "lock": false,
             "name": "find_channel",
             "inputs": {
@@ -19636,7 +19636,7 @@
             "y": 3276.656098516192,
             "z": 27,
             "width": 500,
-            "height": 180,
+            "height": 302,
             "lock": false,
             "name": "merge_texts_advanced_6x",
             "inputs": {
@@ -35295,8 +35295,8 @@
           {
             "block_id": "Bj8NUgi7gO:12",
             "color": "",
-            "x": 32,
-            "y": 32,
+            "x": -223.59364538374206,
+            "y": 7.624584227708528,
             "z": 0,
             "width": 390,
             "height": 146,
